@@ -6,6 +6,7 @@ public class SampleScript : MonoBehaviour
     void Start()
     {
         Debug.Log("Oh I started the game");
+        Debug.Log("Oh I started the game");
     }
 
     // Update is called once per frame
