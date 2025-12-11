@@ -4,8 +4,9 @@ public class PaintingInteraction : MonoBehaviour
 {
     [SerializeField] bool hasPainting;
     [SerializeField] string colorPainting;
-    [SerializeField] GameObject prefab;
+    [SerializeField] GameObject prefabPainting;
     [SerializeField] Transform player;
+
 
     private GameObject ownPainting;
 
@@ -14,8 +15,8 @@ public class PaintingInteraction : MonoBehaviour
     void Start()
     {
         if(hasPainting){
-            GameObject ownPainting = Instantiate(
-            prefab,
+            ownPainting = Instantiate(
+            prefabPainting,
             new Vector2(0, 5),
             Quaternion.identity,
             transform
@@ -24,18 +25,11 @@ public class PaintingInteraction : MonoBehaviour
             ownPainting.transform.localScale = new Vector2(0.15f, 0.2f);
         }
         else{
-            //
+            ownPainting = null;
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
-    void setPainting(bool paintingStatus, string color){
+    public void setPainting(bool paintingStatus, string color){
         hasPainting = paintingStatus;
         colorPainting = color;
     }
