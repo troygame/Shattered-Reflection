@@ -3,12 +3,32 @@ using UnityEngine.Events;
 
 public class PaintingTrigger : MonoBehaviour
 {
-    [SerializeField] GameObject Hallway;
+    [SerializeField] HallwayPaintingInteraction hallway;
 
     void OnTriggerStay2D(Collider2D other){
-        if(Input.GetKeyDown(KeyCode.F)){
-            Hallway.GetComponent<PaintingInteraction>().setPainting(false, "blue");
+
+        if (hallway.hasPainting)
+        {
+            
+            if (Input.GetKey(KeyCode.F))
+            {
+                Debug.Log("removedPainting");
+                hallway.removePainting();
+            }
         }
-    } 
+        else if (other.CompareTag("Painting"))
+        {
+            Debug.Log("painting Touching");
+            if (Input.GetKey(KeyCode.F))
+            {
+                
+                hallway.setPainting(other.GetComponent<PaintingManager>());
+            }
+            
+        }
+        
+    }
+
+
    
 }

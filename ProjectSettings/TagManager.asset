@@ -5,15 +5,16 @@ TagManager:
   serializedVersion: 3
   tags:
   - PaintingTriggerZone
+  - Painting
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Ground
-  - 
+  - Painting Holder
   - 
   - 
   - 
