@@ -4,31 +4,61 @@ using UnityEngine.Events;
 public class PaintingTrigger : MonoBehaviour
 {
     [SerializeField] HallwayPaintingInteraction hallway;
+    private Collider2D collider;
 
-    void OnTriggerStay2D(Collider2D other){
+    void Update(){
 
-        if (hallway.hasPainting)
+        if (collider != null)
         {
-            
-            if (Input.GetKey(KeyCode.F))
+
+            if (hallway.hasPainting)
             {
-                Debug.Log("removedPainting");
-                hallway.removePainting();
+
+                if (Input.GetKey(KeyCode.F))
+                {
+                    Debug.Log("removedPainting");
+                    hallway.removePainting();
+                }
             }
+            else if (collider.CompareTag("Painting"))
+            {
+                Debug.Log("painting Touching");
+                if (Input.GetKey(KeyCode.F))
+                {
+
+                    hallway.setPainting(collider.GetComponent<PaintingManager>());
+                }
+
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        collider = other;
+
+        if (other.CompareTag("Player") && hallway.hasPainting)
+        {
+            hallway.painting.showUI = true;
         }
         else if (other.CompareTag("Painting"))
         {
-            Debug.Log("painting Touching");
-            if (Input.GetKey(KeyCode.F))
-            {
-                
-                hallway.setPainting(other.GetComponent<PaintingManager>());
-            }
-            
+            other.GetComponent<PaintingManager>().showUI = true;
         }
-        
     }
 
+    void OnTriggerExit2D(Collider2D other)
+    {
+        collider = null;
 
+        if (other.CompareTag("Player") && hallway.hasPainting)
+        {
+            hallway.painting.showUI = false;
+        }
+        else if (other.CompareTag("Painting"))
+        {
+            other.GetComponent<PaintingManager>().showUI = false;
+        }
+    }
    
 }

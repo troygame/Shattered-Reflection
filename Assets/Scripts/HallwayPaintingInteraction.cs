@@ -55,8 +55,10 @@ public class HallwayPaintingInteraction : MonoBehaviour
 
     public void removePainting()
     {
+        painting.showUI = false; 
         hasPainting=false;
         painting=null;
         PaintingHolder.SetActive(false);
+        
     }
 }
