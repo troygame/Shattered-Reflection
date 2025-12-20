@@ -46,10 +46,11 @@ public class HallwayPaintingInteraction : MonoBehaviour
     }
 
     public void setPainting(PaintingManager p){
+        PaintingHolder.SetActive(true);
         hasPainting=true;
         painting=p;
         paintingColor=p.ownColor;
-        PaintingHolder.SetActive(true);
+        
         painting.gameObject.transform.position=paintingPosition.position;
     }
 

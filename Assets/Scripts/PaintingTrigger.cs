@@ -14,7 +14,7 @@ public class PaintingTrigger : MonoBehaviour
             if (hallway.hasPainting)
             {
 
-                if (Input.GetKey(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.F))
                 {
                     Debug.Log("removedPainting");
                     hallway.removePainting();
@@ -23,7 +23,7 @@ public class PaintingTrigger : MonoBehaviour
             else if (collider.CompareTag("Painting"))
             {
                 Debug.Log("painting Touching");
-                if (Input.GetKey(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.F))
                 {
 
                     hallway.setPainting(collider.GetComponent<PaintingManager>());
