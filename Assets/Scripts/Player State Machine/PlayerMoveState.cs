@@ -12,7 +12,7 @@ public class PlayerMoveState : PlayerState
 
         if (player.animator != null)
         {
-            player.animator.Play("Player_Run"); // placeholder
+            player.animator.Play("Walk"); // placeholder
         }
 
         player.ApplyGravityMultiplier(false);

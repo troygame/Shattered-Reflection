@@ -13,7 +13,7 @@ public class PlayerIdleState : PlayerState
         if (player.animator != null)
         {
             // Placeholder animation name
-            player.animator.Play("Player_Idle");
+            player.animator.Play("Idle");
         }
 
         player.ApplyGravityMultiplier(false);
