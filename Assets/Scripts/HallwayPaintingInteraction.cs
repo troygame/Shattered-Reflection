@@ -62,4 +62,6 @@ public class HallwayPaintingInteraction : MonoBehaviour
         PaintingHolder.SetActive(false);
         
     }
+
+
 }
