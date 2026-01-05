@@ -11,17 +11,18 @@ public class HallwayPaintingInteraction : MonoBehaviour
         orange,
         yellow,
         green,
-        violet,
         blue,
-        purple
+        indigo,
+        violet
     }
     [SerializeField] Transform paintingPosition;
-    [SerializeField] Colors hallwayColor;
+    public Colors hallwayColor;
     //[SerializeField] Transform player;
     [SerializeField] GameObject trigger;
-    [SerializeField] GameObject PaintingHolder;
 
-    Colors paintingColor;
+    [SerializeField] GameObject trigger2;
+
+    public Colors paintingColor;
     public PaintingManager painting;
     
 
@@ -45,21 +46,29 @@ public class HallwayPaintingInteraction : MonoBehaviour
         */
     }
 
+
+    public void disableTrigger()
+    {
+        trigger.SetActive(false);
+        trigger2.SetActive(false);
+    }
+
     public void setPainting(PaintingManager p){
-        PaintingHolder.SetActive(true);
         hasPainting=true;
         painting=p;
         paintingColor=p.ownColor;
-        
+        int holderLayer = LayerMask.NameToLayer("Painting");
+        painting.gameObject.layer = holderLayer;  
         painting.gameObject.transform.position=paintingPosition.position;
     }
 
     public void removePainting()
     {
+        int groundLayer = LayerMask.NameToLayer("Ground");
+        painting.gameObject.layer = groundLayer;  
         painting.showUI = false; 
         hasPainting=false;
         painting=null;
-        PaintingHolder.SetActive(false);
         
     }
 

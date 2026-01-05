@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 public class AutomaticTeleportation : MonoBehaviour
 {
-    [SerializeField] int hallwayLength;
+    [SerializeField] float hallwayLength;
     [SerializeField] Transform player;
 
     [SerializeField] Rigidbody2D rb;

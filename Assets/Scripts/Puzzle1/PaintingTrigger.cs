@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,6 +6,8 @@ public class PaintingTrigger : MonoBehaviour
 {
     [SerializeField] HallwayPaintingInteraction hallway;
     private Collider2D collider;
+
+    [SerializeField] GameObject wardrobe;
 
     void Update(){
 
@@ -16,13 +19,13 @@ public class PaintingTrigger : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    Debug.Log("removedPainting");
+                    //UnityEngine.Debug.Log("removedPainting");
                     hallway.removePainting();
                 }
             }
             else if (collider.CompareTag("Painting"))
             {
-                Debug.Log("painting Touching");
+                //UnityEngine.Debug.Log("painting Touching");
                 if (Input.GetKeyDown(KeyCode.F))
                 {
 
@@ -35,6 +38,7 @@ public class PaintingTrigger : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        //UnityEngine.Debug.Log("enter");
         collider = other;
 
         if (other.CompareTag("Player") && hallway.hasPainting)
