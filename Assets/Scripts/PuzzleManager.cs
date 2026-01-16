@@ -14,6 +14,10 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] GameObject wardrobe;
 
     [SerializeField] Puzzle2Trigger p2Trigger;
+
+    [Header("Header 3")]
+
+    [SerializeField] GameObject door;
     void Start()
     {
         puzzleNumber = 1;
@@ -69,5 +73,6 @@ public class PuzzleManager : MonoBehaviour
         hallway1Replacement.SetActive(false);
         hallway1.SetActive(true);
         wardrobe.SetActive(false);
+        door.SetActive(true);
     }
 }
