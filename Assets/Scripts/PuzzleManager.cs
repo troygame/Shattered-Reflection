@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class PuzzleManager : MonoBehaviour
 {
-     private int puzzleNumber;
+    private int puzzleNumber;
     [Header("puzzle 1")]
     [SerializeField] private List<HallwayPaintingInteraction> hallways = new List<HallwayPaintingInteraction>();
     [SerializeField] GameObject hallway1;
@@ -14,9 +14,17 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] GameObject wardrobe;
 
     [SerializeField] Puzzle2Trigger p2Trigger;
+
+    [Header("puzzle 3")]
+    [SerializeField] private List<GameObject> hallwaysStairs = new List<GameObject>();
     void Start()
     {
         puzzleNumber = 1;
+
+        foreach(var stairs in hallwaysStairs)
+        {
+            stairs.SetActive(false);
+        }
     }
 
     void Update()
@@ -69,5 +77,10 @@ public class PuzzleManager : MonoBehaviour
         hallway1Replacement.SetActive(false);
         hallway1.SetActive(true);
         wardrobe.SetActive(false);
+
+        foreach(var stairs in hallwaysStairs)
+        {
+            stairs.SetActive(true);
+        }
     }
 }
