@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-    
+
         // --- INPUT (old input system for simplicity) ---
         MoveInput = Input.GetAxisRaw("Horizontal");
         if (Input.GetButtonDown("Jump"))
