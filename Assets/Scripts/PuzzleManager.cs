@@ -17,6 +17,9 @@ public class PuzzleManager : MonoBehaviour
 
     [Header("puzzle 3")]
     [SerializeField] private List<GameObject> hallwaysStairs = new List<GameObject>();
+    [Header("Header 3")]
+
+    [SerializeField] GameObject door;
     void Start()
     {
         puzzleNumber = 1;
@@ -82,5 +85,6 @@ public class PuzzleManager : MonoBehaviour
         {
             stairs.SetActive(true);
         }
+        door.SetActive(true);
     }
 }
