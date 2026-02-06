@@ -1,13 +1,14 @@
+//PlayerPushState
 using UnityEngine;
 
 public class PlayerPushState : PlayerState
 {
-    public PlayerPushState (Player player, StateMachine stateMachine) : base(player, stateMachine)
+    public PlayerPushState (Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
 
     }
 
-    public override Enter() 
+    public override void Enter() 
     {
         base.Enter();
 
@@ -16,20 +17,31 @@ public class PlayerPushState : PlayerState
             player.animator.Play("Push"); // placeholder
         }
 
-        ApplyGravityMultiplier(false);
+        player.ApplyGravityMultiplier(false);
     }
 
-    if (player.JumpPressed && player.IsGrounded)
+    public override void HandleInput()
     {
-        stateMachine.ChangeState(PlayerState.JumpState);
-    }
-    else if (Mathf.Abs(player.MoveInput) <= 0.01f)
-    {
-        stateMachine.ChangeState(player.IdleState);
-    }
-    else if (!player.IsGrounded)
-    {
-        stateMachine.ChangeState(player.FallState);
+        base.HandleInput();
+
+        if (player.JumpPressed && player.IsGrounded)
+        {
+            stateMachine.ChangeState(PlayerState.PlayerJumpState);
+        }
+        else if (Mathf.Abs(player.MoveInput) <= 0.01f)
+        {
+            stateMachine.ChangeState(player.IdleState);
+        }
+        else if (!player.IsGrounded)
+        {
+            stateMachine.ChangeState(player.FallState);
+        }
     }
 
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+        player.ApplyHorizontalMovement();
+        player.FaceMovementDirection();
+    }
 }

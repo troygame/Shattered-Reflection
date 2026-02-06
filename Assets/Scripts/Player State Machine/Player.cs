@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
         }
         // --- STATE UPDATES ---
         StateMachine.CurrentState.HandleInput();
-        StateMachine.CurrentState.LogicUpdate();
+        StateMachine.CurrentState.dLogicUpate();
 
         // Consume jump input after state logic
         JumpPressed = false;
