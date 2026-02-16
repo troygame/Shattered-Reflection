@@ -26,7 +26,7 @@ public class PlayerPushState : PlayerState
 
         if (player.JumpPressed && player.IsGrounded)
         {
-            stateMachine.ChangeState(PlayerState.PlayerJumpState);
+            stateMachine.ChangeState(player.JumpState);
         }
         else if (Mathf.Abs(player.MoveInput) <= 0.01f)
         {
