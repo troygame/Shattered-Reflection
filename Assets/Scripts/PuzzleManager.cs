@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] GameObject hallway1;
 
     [Header("puzzle 2")]
-
     [SerializeField] GameObject hallway1Replacement;
     [SerializeField] GameObject wardrobe;
 
@@ -17,6 +17,9 @@ public class PuzzleManager : MonoBehaviour
 
     [Header("puzzle 3")]
     [SerializeField] private List<GameObject> hallwaysStairs = new List<GameObject>();
+    [SerializeField] GameObject key1;
+    [SerializeField] GameObject key2;
+
     [Header("Header 3")]
 
     [SerializeField] GameObject door;
@@ -28,13 +31,15 @@ public class PuzzleManager : MonoBehaviour
         {
             stairs.SetActive(false);
         }
+        key1.SetActive(false);
+        key2.SetActive(false);
     }
 
     void Update()
     {
         if (puzzleNumber == 1 && AllHallwaysMatch())
         {
-            Debug.Log("first puzzle completed!");
+            UnityEngine.Debug.Log("first puzzle completed!");
             DisableAllTriggers();
             puzzleNumber++;
             generateSecondPuzzle();
@@ -68,7 +73,7 @@ public class PuzzleManager : MonoBehaviour
 
     void generateSecondPuzzle()
     {
-        Debug.Log("first puzzle completed!");
+        UnityEngine.Debug.Log("first puzzle completed!");
         hallway1Replacement.SetActive(true);
         hallway1.SetActive(false);
         wardrobe.SetActive(true);
@@ -76,7 +81,7 @@ public class PuzzleManager : MonoBehaviour
 
     void generateThirdPuzzle()
     {
-        Debug.Log("second puzzle completed!");
+        UnityEngine.Debug.Log("second puzzle completed!");
         hallway1Replacement.SetActive(false);
         hallway1.SetActive(true);
         wardrobe.SetActive(false);
@@ -85,6 +90,10 @@ public class PuzzleManager : MonoBehaviour
         {
             stairs.SetActive(true);
         }
+        key1.SetActive(true);
+        key2.SetActive(true);
+        UnityEngine.Debug.Log("set keys to active");
         door.SetActive(true);
+        
     }
 }
